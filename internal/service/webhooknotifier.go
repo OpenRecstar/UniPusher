@@ -10,12 +10,15 @@ import (
 	"time"
 )
 
+// WebhookNotifier 是 Webhook 通知服务
 type WebhookNotifier struct{}
 
+// NewWebhookNotifier 创建 Webhook 通知服务
 func NewWebhookNotifier() *WebhookNotifier {
 	return &WebhookNotifier{}
 }
 
+// SendNotification 发送通知
 func (n *WebhookNotifier) SendNotification(message, target string) error {
 	payload, err := sonic.Marshal(map[string]string{"message": message})
 	if err != nil {
